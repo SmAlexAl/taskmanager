@@ -8,18 +8,18 @@
         <div>Описание</div>
         <div>{{$project->description}}</div>
 
-        <a href="/delete/project/{{$project->id}}">
+        @can('update', $project)
+            <a href="/project/{{$project->id}}/edit">
+            <span class="btn btn-primary">
+                Редактировать
+            </span>
+            </a>
+        @endcan
+        <a href="/project/{{$project->id}}/delete">
             <span>
                 Удалить
             </span>
         </a>
-        @can('update', $project)
-        <a href="/project/{{$project->id}}/edit">
-            <span>
-                Редактировать
-            </span>
-        </a>
-        @endcan
     </div>
 
 @endsection

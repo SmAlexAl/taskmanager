@@ -10,6 +10,10 @@ class Project extends Model
       ['title','description'];
 
 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
 
 
     protected $table = 'projects';

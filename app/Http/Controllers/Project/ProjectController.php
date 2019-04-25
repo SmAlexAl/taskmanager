@@ -7,24 +7,56 @@ use App\Project;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+    /**
+     * Создание проекта
+     *
+     * @param ProjectRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function create(ProjectRequest $request)
     {
-        Project::create($request->all());
+        //переделать эти 2 строчки в одну
+        $project = Project::create($request->all());
+
+        Auth::user()->project()->save($project);
 
         return redirect('/projects');
 
     }
-//
-//    public function delete($project_id){
-//        $project = Project::find($project_id);
-//        $project->delete();
-//
-//        return redirect('/view/projects');
-//    }
-//
+
+    /**
+     * Обновление проекта
+     *
+     * @param Project $project
+     * @param ProjectRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update($project, ProjectRequest $request)
+    {
+        $project->update($request->all());
+
+        return redirect('/project/' . $project->id);
+    }
+
+    /**
+     * @param Project $project_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function delete($project){
+        $project->delete();
+
+        return redirect('/projects');
+    }
+
+    /**
+     * Показывает все доступные проекты
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function views(){
         $projects = Project::all();
 
@@ -32,24 +64,22 @@ class ProjectController extends Controller
 
     }
 
-    public function view($project_id){
-        $project = Project::find($project_id);
+    /**
+     *
+     * @param $project
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function view($project){
 
         return view('project.viewProject',['project' => $project]);
 
     }
-//
-//    public function viewProject($project_id){
-//        $project = Project::find($project_id);
-//
-//        return view('project.viewProject',['project' => $project]);
-//
-//    }
 
-
-    public function edit($id){
-        $project = Project::find($id);
-
+    /**
+     * @param $project
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($project){
         $arr_user = [];
 
         foreach (User::all() as $user){
@@ -60,6 +90,11 @@ class ProjectController extends Controller
 
     }
 
+    /**
+     * Добавление проекта
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(){
 
         $arr_user = [];

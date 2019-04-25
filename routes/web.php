@@ -32,3 +32,7 @@ Route::get('/project/{project}', 'Project\ProjectController@view');
 
 Route::get('/project/{project}/edit', 'Project\ProjectController@edit');
 
+Route::post('/project/{project}', 'Project\ProjectController@update');
+
+Route::get('/project/{project}/delete', 'Project\ProjectController@delete');
+
