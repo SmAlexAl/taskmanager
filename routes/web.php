@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 
+Route::get('/create/users', 'CreateTestDataController@createUsers');
+
 //Route::resource('project');
 
 Route::get('/home', 'HomeController@index')->name('home');

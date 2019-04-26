@@ -7,7 +7,16 @@
         <div>{{$project->id}}</div>
         <div>Описание</div>
         <div>{{$project->description}}</div>
-
+        <div>
+            <div>
+                Разработчики
+            </div>
+            <ul>
+                @foreach($project->developers as $developer)
+                    <li>{{$developer->name}}</li>
+                @endforeach
+            </ul>
+        </div>
         @can('update', $project)
             <a href="/project/{{$project->id}}/edit">
             <span class="btn btn-primary">

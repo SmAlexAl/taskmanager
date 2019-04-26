@@ -5,12 +5,17 @@ namespace App\Http\Controllers\Project;
 use App\Http\Requests\ProjectRequest;
 use App\Project;
 use App\User;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Создание проекта
      *
@@ -20,10 +25,10 @@ class ProjectController extends Controller
     public function create(ProjectRequest $request)
     {
         //переделать эти 2 строчки в одну
-        $project = Project::create($request->all());
+//        $project = Project::create($request->all());
 
-        Auth::user()->project()->save($project);
-
+        $project = Auth::user()->project()->create($request->all());
+        $project->developers()->attach($request->input('developers'));
         return redirect('/projects');
 
     }
@@ -38,6 +43,8 @@ class ProjectController extends Controller
     public function update($project, ProjectRequest $request)
     {
         $project->update($request->all());
+
+        $project->developers()->attach($request->input('developers'));
 
         return redirect('/project/' . $project->id);
     }
@@ -71,6 +78,9 @@ class ProjectController extends Controller
      */
     public function view($project){
 
+        foreach ($project->developers as $developer){
+            $name = $developer->name;
+        }
         return view('project.viewProject',['project' => $project]);
 
     }

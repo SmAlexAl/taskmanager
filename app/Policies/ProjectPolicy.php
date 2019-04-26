@@ -31,6 +31,7 @@ class ProjectPolicy
     public function create(User $user)
     {
         //
+        return !empty($user->id);
     }
 
     /**

@@ -14,6 +14,9 @@ class Project extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function developers(){
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 
 
     protected $table = 'projects';

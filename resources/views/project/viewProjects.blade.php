@@ -7,7 +7,7 @@
                 Создать проект
             </span>
         </a>
-        <table>
+        <table class="table table-condensed">
             <tr>
                 <th>Системный номер</th>
                 <th>Название</th>
