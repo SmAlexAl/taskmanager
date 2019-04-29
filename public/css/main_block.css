@@ -1,0 +1,26 @@
+.header{
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+.container{
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+}
+
+.container .collapse li{
+    float: right;
+}
+
+.main-page{
+    margin-left: 10%;
+}
+
+.body div.main_block{
+    float: left;
+}
+
+.data{
+    margin: 6%;
+    width: 50%;
+}

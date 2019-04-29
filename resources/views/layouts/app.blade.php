@@ -17,14 +17,17 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main_block.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel header">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    Главная
+                    Менеджер задач
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -71,9 +74,24 @@
                 </div>
             </div>
         </nav>
-
-        <div class="py-4">
+        <div class="body">
+        <div class="category-wrap main_block menu">
+            <h3>
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    Главная
+                </a>
+            </h3>
+            <ul>
+                <li><a href="{{url('/projects')}}">Проекты</a></li>
+                <li><a href="{{url('/tasks')}}">Задачи</a></li>
+                <li><a href="">Книги</a></li>
+                <li><a href="">Журналы</a></li>
+                <li><a href="">Картинки</a></li>
+            </ul>
+        </div>
+        <div class="main_block data">
             @yield('content')
+        </div>
         </div>
     </div>
 </body>
