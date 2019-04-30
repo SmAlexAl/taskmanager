@@ -38,3 +38,16 @@ Route::post('/project/{project}', 'Project\ProjectController@update');
 
 Route::get('/project/{project}/delete', 'Project\ProjectController@delete');
 
+
+
+
+//task
+
+Route::post('task', 'Task\TaskController@create');
+Route::get('/task/add', 'Task\TaskController@add');
+Route::get('/tasks', 'Task\TaskController@views');
+
+Route::post('/task/{task}', 'Task\TaskController@update');
+
+Route::get('task/{task}', 'Task\TaskController@show');
+Route::get('task/{task}/edit', 'Task\TaskController@edit');

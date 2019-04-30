@@ -15,5 +15,11 @@
 <!-- project_id form input-->
 <div class='form-group'>
     {!! Form::label('project_id', 'Проект:') !!}
-    {!! Form::select('project_id', $projects)  !!}
+    {!! Form::select('project_id', $projects, $project)  !!}
 </div>
+<!-- priority form input-->
+<div class='form-group'>
+    {!! Form::label('priority', 'Приоритет:') !!}
+    {!! Form::select('priority', $priority, null, ['class' => 'form-control'])  !!}
+</div>
+

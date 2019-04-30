@@ -18,6 +18,9 @@ class Project extends Model
         return $this->belongsToMany('App\User')->withTimestamps();
     }
 
+    public function tasks(){
+        return $this->hasMany('App\Task','project_id');
+    }
 
     protected $table = 'projects';
 }

@@ -7,7 +7,7 @@
     <!-- Bootstrap шаблон... -->
 
     <div class="panel-body">
-    {!! Form::model($task, ['method' => 'POST', 'action' => ['Task\AddTaskController@update', $task->id]]) !!}
+    {!! Form::model($task, ['method' => 'POST', 'action' => ['Task\TaskController@update', $task->id]]) !!}
     <!-- title form input-->
         @include('task.formTask')
         <!-- Добавить задачу submit  form -->

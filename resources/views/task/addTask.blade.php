@@ -3,6 +3,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>
+        Добавить задачу
+    </h1>
     {!! Form::open(['url' => 'task']) !!}
     <!-- title form input-->
         @include('task.formTask')

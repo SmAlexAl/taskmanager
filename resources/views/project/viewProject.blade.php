@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <div>{{$project->title}}</div>
+        <h1>{{$project->title}}</h1>
         <div>Системный номер</div>
         <div>{{$project->id}}</div>
         <div>Описание</div>
@@ -28,6 +28,11 @@
             <span>
                 Удалить
             </span>
+        </a>
+        <a href="{{url('/task/add?project=' . $project->id)}}">
+        <span class="btn btn-primary">
+            Добавить задачу
+        </span>
         </a>
     </div>
 
