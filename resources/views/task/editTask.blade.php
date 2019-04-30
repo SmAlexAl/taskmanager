@@ -9,7 +9,7 @@
     <div class="panel-body">
     {!! Form::model($task, ['method' => 'POST', 'action' => ['Task\TaskController@update', $task->id]]) !!}
     <!-- title form input-->
-        @include('task.formTask')
+        @include('task.formTask',['project' => null])
         <!-- Добавить задачу submit  form -->
         <div>
             {!! Form::submit('Сохранить задачу', ['class' => 'btn btn-primary'])  !!}

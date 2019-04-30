@@ -15,7 +15,7 @@
             </tr>
             @foreach($tasks as $task)
                 <tr>
-                    <td><a href="/view/task/{{$task->id}}">{{$task->title}}</a></td>
+                    <td><a href="/task/{{$task->id}}">{{$task->title}}</a></td>
                     <td>{{$task->text}}</td>
                     <td>{{$task->description}}</td>
                     <td><a href="/project/{{$task->project->id}}">{{$task->project->title}}</a></td>
