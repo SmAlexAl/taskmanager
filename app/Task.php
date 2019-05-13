@@ -25,9 +25,24 @@ class Task extends Model
     }
 
 
+    public function getPriorityAttribute($key){
+        $priority = ['0' => 'Низкий', '1' => 'Высокий', '2' => 'Сделать в первую очередь'];
+
+        return $priority[$key];
+    }
+    public function getStatusAttribute($key){
+        $status = ['0' => 'Не выполнена', '1' => 'Выполнена', '2' => 'Выполняется', '3' => 'Пауза'];
+
+        return $status[$key];
+    }
+
     public function setDeadlineAtAttribute($date)
     {
         $this->attributes['deadline_at'] = Carbon::parse($date);
+    }
+
+    public function getDeadlineAtAttribute( $date){
+        return Carbon::create($date)->format('d.m.Y'); //добавить часы минуты
     }
 
 //    public function getDeadlineAtAttribute($date)

@@ -26,7 +26,6 @@ class ProjectController extends Controller
     {
         //переделать эти 2 строчки в одну
 //        $project = Project::create($request->all());
-
         $project = Auth::user()->project()->create($request->all());
         $project->developers()->attach($request->input('developers'));
         return redirect('/projects');
@@ -44,7 +43,7 @@ class ProjectController extends Controller
     {
         $project->update($request->all());
 
-        $project->developers()->attach($request->input('developers'));
+        $project->developers()->sync($request->input('developers'));
 
         return redirect('/project/' . $project->id);
     }

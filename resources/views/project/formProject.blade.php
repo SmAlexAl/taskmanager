@@ -6,8 +6,9 @@
 <!-- description form input-->
 <div>
     {!! Form::label('description', 'Описание:') !!}
-    {!! Form::text('description', null, ['class' => 'form-control'])  !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control'])  !!}
 </div>
+
 
 <!-- Developers form input-->
 <div class='form-group'>

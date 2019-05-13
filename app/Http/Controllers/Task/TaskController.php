@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    private $status = ['0' => 'Не выполнена', '1' => 'Выполнена'];
+    private $status = ['0' => 'Не выполнена', '1' => 'Выполнена', '2' => 'Выполняется', '3' => 'Пауза'];
     private $priority = ['0' => 'Низкий', '1' => 'Высокий', '2' => 'Сделать в первую очередь'];
 
     public function add(){
@@ -49,7 +49,7 @@ class TaskController extends Controller
 
     public function show($id){
         $task = Task::find($id);
-        return view('task.viewTask',['task' => Task::find($id),'priority' => $this->priority[$task->priority]]);
+        return view('task.viewTask',['task' => Task::find($id),'priority' => $task->priority]);
     }
 
     public function edit($task_id){
